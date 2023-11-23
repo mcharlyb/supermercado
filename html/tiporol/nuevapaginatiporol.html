@@ -1,0 +1,46 @@
+{{define "nuevapaginatiporol"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{template "estilos"}}
+</head>
+<body>
+  {{template "menu"}}
+  <div class="container">
+    <div class="mb-3">
+      <label class="form-label">Id Tipo Rol</label>
+      <input type="text" class="form-control" id="txtidtiporol" readonly >
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre Tipo Rol</label>
+      <input type="text" class="form-control" id="txnombretiporol"
+      placeholder="Ingrese Nombre Tipo Rol">
+    </div>
+ 
+  <div class="mb-3">
+    <label for="txtdescripcion" 
+    class="form-label">Descripcion Tipo Rol</label>
+    <textarea class="form-control" name="descripcion"
+    id="txtdescripciontiporol" rows="3"></textarea>
+  </div>
+  <div id="divErrores">
+    
+  </div>
+  <div id="divTabla">
+
+  </div>
+  <div class="mt-3">
+    <button type="button" onclick="mostrarAlerta()" class="btn btn-outline-primary">
+      Aceptar</button>
+      <a href="/paginatiporol" class="btn btn-outline-danger">Regresar</a>
+ </div>
+ </div>
+  {{template "scripts"}}
+    <script type="text/javascript" src="../../static/js/nuevapaginatiporol.js"></script>  
+</body>
+</html>
+{{end}}

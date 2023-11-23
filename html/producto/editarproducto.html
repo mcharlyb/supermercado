@@ -1,0 +1,80 @@
+{{define "editarproducto"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{template "estilos"}}
+</head>
+<body>
+    {{template "menu"}}
+    <form method="POST" action= "/productos/guardar"  id="frmEnviar" class="container">
+        <h1>Editar Producto</h1>
+        <div class="mb-3">
+          <label for="txtidproducto" 
+          class="form-label">Id Producto</label>
+          <input type="text" class="form-control" 
+          name="idproducto" value="{{.Idproducto}}" readonly
+          id="txtidproducto" >
+        </div>
+        <div class="mb-3">
+            <label for="txtnombre" 
+            class="form-label">Nombre Producto</label>
+            <input type="text" class="form-control obligatorio" 
+            name="nombre" value="{{.Nombreproducto}}"
+            id="txtnombre" placeholder="Ingrese Nombre del Producto">
+          </div>
+          <div class="mb-3">
+            <label for="txtdescripcion" class="form-label obligatorio">Ingrese Descripcion</label>
+            <textarea class="form-control" 
+            name="descripcion"
+            id="txtdescripcion
+            rows="3">{{.Descripcionproducto}}</textarea>
+          </div>
+          <div class="mb-3">
+            <label for="txtprecio" 
+            class="form-label">Precio Producto</label>
+            <input type="text" class="form-control obligatorio" 
+            name="precio" value="{{.Precio}}"
+            id="txtprecio" placeholder="Ingrese Precio">
+            <div class="mb-3">
+                <label for="txtstock" 
+                class="form-label">Stock Producto</label>
+                <input type="text" class="form-control" 
+                name="stock" value="{{.Stock}}"
+                id="txtstock" placeholder="Ingrese Stock"> 
+          </div>
+          <div class="mb-3">
+            <label for="cbocategoria"
+                class="form-label">Seleccione una Categoria</label>
+            <select data-idcategoria="{{.Idcategoria}}"
+            class="form-select obligatorio"  id="cbocategoria" 
+             name="categoria" aria-label="Seleccione Categoria">
+            <option selected>--Seleccione--</option>
+            {{range .ListaCategoria}}
+                <option value="{{.Idcategoria}}">{{.Nombre}}</option>
+            {{end}}
+          </div>  
+          </select>
+          <div>
+            <button type="button" onclick="mostrarAlertae()" class="btn btn-outline-primary">
+              Aceptar</button>
+              <a href="/productos" class="btn btn-outline-danger">Regresar</a>
+         </div>
+         <div id="divErrores">
+          
+        </div>
+        {{range .Errores}}
+        <div class="alert alert-danger">
+          {{.}}
+        </div>
+      {{end}}
+    </form>
+    <script type="text/javascript" src="../../static/js/editarproducto.js"></script>
+    {{template "scripts"}}
+</body>
+</html>
+
+{{end}}

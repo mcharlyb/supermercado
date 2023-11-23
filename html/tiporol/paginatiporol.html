@@ -1,0 +1,33 @@
+{{define "paginatiporol"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{template "estilos"}}
+</head>
+<body>
+  {{template "menu"}}
+  <label id="lblestado"></label>
+  <div class="container">
+    
+  
+
+  <a href="/nuevapaginatiporol"  style="padding: 5px ;"  id="btnuevo" class="btn btn-primary mb-3">Nuevo Tipo Rol</a>
+ 
+  <div id="divTabla">
+
+  </div>
+
+</div>
+<form method="POST" id="frm">
+  <input type="hidden" id="bledit" value="1"/>
+  <input type="hidden" id="bldelet" value="1"/>
+</form> 
+  {{template "scripts"}}
+  <script type="text/javascript" src="../../static/js/paginatiporol.js"></script>
+</body>
+</html>
+{{end}}

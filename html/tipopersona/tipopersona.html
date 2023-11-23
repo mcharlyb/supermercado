@@ -1,0 +1,67 @@
+{{define "tipopersona"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{template "estilos"}}
+</head>
+<body>
+    {{template "menu"}}
+    <div class="container mb-3">
+        <button type="button" class="btn btn-primary"
+         onclick="AbrirModal(0)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Nuevo Tipo Persona
+          </button>
+    </div>
+    
+    <div class="container" id="divTabla">
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" 
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="lbltitulo"></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <div class="mb-3">
+                <label for="txtIdtipopersona" class="form-label">Id Tipo Persona</label>
+                <input type="text" class="form-control" id="txtIdtipopersona" readonly >
+              </div>
+            <div class="mb-3">
+                <label for="txtnombre" class="form-label">Nombre Tipo Persona</label>
+                <input type="text" class="form-control obligatorio" id="txtnombre" name="Nombre" placeholder="Ingrese Tipo Persona">
+              </div>
+              <div class="mb-3">
+                <label for="txtdescripcion" class="form-label">Descripcion Tipo Persona</label>
+                
+                <!--input type="text" class="form-control obligatorio" id="txtdescripcion" 
+                name="Descripcion" placeholder="Ingrese Descripcion"-->
+
+                <textarea class="form-control obligatorio" name="descripcion"
+                id="txtdescripcion"name="Descripcion"  rows="3" placeholder="Ingrese Descripcion"></textarea>
+
+              </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" onclick="Guardar()" class="btn btn-primary">Aceptar</button>
+            <button type="button" class="btn btn-danger" id="btncerrar" data-bs-dismiss="modal">Cancelar</button>
+         </div>
+         <div id="divErrores">
+
+         </div>
+         </div>
+        </div>
+     </div>
+
+    {{template "scripts"}}
+    <script type="text/javascript" src="../../static/js/tipopersona.js"></script>
+</body>
+</html>
+{{end}}

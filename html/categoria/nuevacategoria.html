@@ -1,0 +1,47 @@
+{{define "nuevacategoria"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{template "estilos"}}
+</head>
+<body>
+    {{template "menu"}}
+
+    <form class="container" method="POST"  id="frmEnviar" action="/categoria/nueva">
+        <div class="mb-3">
+            <label for="txtnombre" 
+            class="form-label">Nombre Categoria</label>
+            <input type="text" class="form-control" 
+            id="txtnombre" name="nombre" value="{{.Nombre}}" 
+            placeholder="Nombre Categoria">
+        </div>
+          <div class="mb-3">
+            <label for="txtdescripcion" 
+            class="form-label">Descripcion Categoria</label>
+            <textarea class="form-control" name="descripcion"
+            id="txtdescripcion" rows="3">{{.Descripcion}}</textarea>
+          </div>
+          <div>
+            <button type="button" onclick="mostrarAlertaa()" class="btn btn-outline-primary">
+              Aceptar</button>
+              <a href="/categoria" class="btn btn-outline-danger">Regresar</a>
+         </div>
+        <div id="divErrores">
+
+        </div> 
+        {{if.ExisteError}}
+        <div class="alert alert-danger">
+          {{.MensajeError}}
+        </div> 
+        {{end}} 
+    </form>
+    
+    {{template "scripts"}}
+    <script type="text/javascript" src="../../static/js/nuevacategoria.js"></script>
+</body>
+</html>
+{{end}}

@@ -1,0 +1,124 @@
+{{define "usuario"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{template "estilos"}}
+  </head>
+  <body>
+    {{template "menu"}}
+    <label id="lblestado"></label>
+    <div class="container mb-3">
+        <button type="button" class="btn btn-primary" id="btnuevo"
+         onclick="AbrirModal(0);MostrarCampos()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Nuevo Usuario
+          </button>
+    </div>
+          
+    <div class="container" id="divTabla">
+
+    </div>
+    <!-- Popup principal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="lbltitulo"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="txtIdusuario" class="form-label">Id Usuario</label>
+              <input type="text" class="form-control" id="txtIdusuario" readonly >
+            </div>
+            <div id="divselpersona">
+              <label for="txtnombrepersona" class="form-label">Seleccione una Persona</label>
+              <div class="input-group mb-3">
+                <input type="hidden" class="form-control obligatorio" 
+                  placeholder="Buscar una Persona" 
+                  id="txtidpersona"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2">
+                <input type="text" class="form-control" 
+                  placeholder="Buscar una Persona" 
+                  id="txtnombrepersona"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2">
+                <button class="btn btn-outline-success"
+                  onclick="AbrirSubPopup('Persona')"
+                  data-bs-toggle="modal" data-bs-target="#staticBackdropSub"
+                  type="button" id="button-addon2">Buscar</button>
+              </div>
+             </div>
+             <div class="mb-3" id="divNomPersona">
+              <label for="txtnombrepersonaro" class="form-label">Nombre Persona</label>
+              <input type="text" class="form-control" id="txtnombrepersonaro" name="Nombre" readonly>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="txtnombreusuario" class="form-label">Nombre Usuario</label>
+              <input type="text" class="form-control obligatorio" id="txtnombreusuario" name="Nombre" placeholder="Ingrese usuario">
+            </div>
+            <div class="mb-3" id="divContra">
+              <label for="txtcontra" class="form-label">Contraseña</label>
+              <input type="password" class="form-control obligatorio" id="txtcontra" name="Contraseña" placeholder="Ingrese Contraseña">
+            </div>
+            <div class="mb-3">
+              <label for="txttiporol"
+                class="form-label">Seleccione Rol</label>
+              <select id="cbotiporol" class="form-select form-select-sm obligatorio" aria-label=".form-select-sm example">
+            
+              </select>
+            </div>
+          </div>       
+          <div class="modal-footer">
+            <button type="button" onclick="Guardar()" class="btn btn-primary">Aceptar</button>
+            <button type="button" class="btn btn-danger" id="btncerrar" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+          <div id="divErrores">
+    
+          </div>
+        </div>
+      </div>
+     </div>
+    <!--Popup sub-->
+    <div class="modal fade" id="staticBackdropSub" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="lbltituloSubPopup"></h1>
+            <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+          </div>
+          <div class="modal-body">
+           <div id="divTablaSubPopup">
+
+
+           </div>
+          </div>       
+          <div class="modal-footer">
+            <!--button type="button" onclick="Guardar()" class="btn btn-primary">Aceptar</button>
+            <!--button type="button" class="btn btn-danger" id="btncerrar" data-bs-dismiss="modal">Cancelar</button-->
+            <button class="btn btn-primary" data-bs-target="#staticBackdrop" id="btncerrarSubPopup" 
+            data-bs-toggle="modal" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>   
+    <form method="POST" id="frm">
+      <input type="hidden" id="txtid" name="id"/>
+      <input type="hidden" id="bledit" value="1"/>
+      <input type="hidden" id="bldelet" value="1"/>
+    </form>
+   
+    {{template "scripts"}}
+    <script type="text/javascript" src="../../static/js/usuario.js"></script>
+  </body>
+</html>
+{{end}}

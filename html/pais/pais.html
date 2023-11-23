@@ -1,0 +1,71 @@
+{{define "pais"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{template "estilos"}}
+  </head>
+  <body>
+    {{template "menu"}}
+    <label id="lblestado"></label>
+    <div class="container mb-3">
+        <button type="button" class="btn btn-primary" id="btnuevo"
+          onclick="AbrirModal(0)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Nuevo Pais
+        </button>
+    </div>
+    <div class="input-group mb-3 container">
+        <span class="input-group-text" id="basic-addon3">Nombre</span>
+        <input type="text" class="form-control"
+        id="txtnombrebuscar" onkeyup="FiltrarPais()"
+        aria-describedby="basic-addon3">
+    </div>
+    <div class="container" id="divTabla">
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="lbltitulo"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="txtIdpais" class="form-label">Id Pais</label>
+              <input type="text" class="form-control" id="txtIdpais" readonly >
+            </div>
+            <div class="mb-3">
+              <label for="txtnombrepais" class="form-label">Nombre Pais</label>
+              <input type="text" class="form-control obligatorio" id="txtnombrepais" name="Nombre" placeholder="Ingrese Pais">
+            </div>
+            <div class="mb-3">
+              <label for="txtcapitalpais" class="form-label">Capital Pais</label>
+              <input type="text" class="form-control obligatorio" id="txtcapitalpais" name="Capital" placeholder="Ingrese Capital">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" onclick="Guardar()" class="btn btn-primary">Aceptar</button>
+            <button type="button" class="btn btn-danger" id="btncerrar" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+          <div id="divErrores">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <form method="POST" id="frm">
+      <input type="hidden" id="txtid" name="id"/>
+      <input type="hidden" id="bledit" value="1"/>
+      <input type="hidden" id="bldelet" value="1"/>
+    </form>
+    {{template "scripts"}}
+
+    <script type="text/javascript" src="../../static/js/pais.js"></script>
+  </body>
+</html>
+{{end}}
